@@ -53,8 +53,8 @@ model_name = 'u2net' #'u2netp'
 data_dir = os.path.join(os.getcwd(), 'train_data' + os.sep)
 # tra_image_dir = os.path.join('DUTS', 'DUTS-TR', 'DUTS-TR', 'im_aug' + os.sep)
 # tra_label_dir = os.path.join('DUTS', 'DUTS-TR', 'DUTS-TR', 'gt_aug' + os.sep)
-tra_image_dir = '/kaggle/working/CVProject/U-2-Net-master/train_data/ECSSD/images'
-tra_label_dir = '/kaggle/working/CVProject/U-2-Net-master/train_data/ECSSD_groundTruth/ground_truth_mask'
+tra_image_dir = 'ECSSD/images' + os.sep
+tra_label_dir = 'ECSSD_groundTruth/ground_truth_mask' + os.sep
 
 
 image_ext = '.jpg'
