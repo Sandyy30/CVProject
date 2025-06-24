@@ -53,8 +53,11 @@ model_name = 'u2net' #'u2netp'
 data_dir = os.path.join(os.getcwd(), 'train_data' + os.sep)
 # tra_image_dir = os.path.join('DUTS', 'DUTS-TR', 'DUTS-TR', 'im_aug' + os.sep)
 # tra_label_dir = os.path.join('DUTS', 'DUTS-TR', 'DUTS-TR', 'gt_aug' + os.sep)
-tra_image_dir = os.path.join('ECSSD'+ os.sep)
-tra_label_dir = os.path.join('ECSSD_groundTruth' + os.sep)
+tra_img_name_list = glob.glob('/kaggle/input/ecssd-dataset/ECSSD/*.jpg')
+tra_lbl_name_list = [
+    '/kaggle/input/ecssd-dataset/ECSSD_groundTruth/' + os.path.basename(f).replace('.jpg', '.png')
+    for f in tra_img_name_list
+]
 
 image_ext = '.jpg'
 label_ext = '.png'
