@@ -156,8 +156,8 @@ for epoch in range(0, epoch_num):
         # del temporary outputs and loss
         del d0, d1, d2, d3, d4, d5, d6, loss2, loss
 
-        print("[epoch: %3d/%3d, batch: %5d/%5d, ite: %d] train loss: %3f, tar: %3f " % (
-        epoch + 1, epoch_num, (i + 1) * batch_size_train, train_num, ite_num, running_loss / ite_num4val, running_tar_loss / ite_num4val))
+        #print("[epoch: %3d/%3d, batch: %5d/%5d, ite: %d] train loss: %3f, tar: %3f " % (
+        #epoch + 1, epoch_num, (i + 1) * batch_size_train, train_num, ite_num, running_loss / ite_num4val, running_tar_loss / ite_num4val))
 
         if ite_num % save_frq == 0:
 
@@ -167,3 +167,11 @@ for epoch in range(0, epoch_num):
             net.train()  # resume train
             ite_num4val = 0
 
+    avg_loss = running_loss / ite_num4val
+    avg_tar_loss = running_tar_loss / ite_num4val
+    print(f"[Epoch {epoch + 1}/{epoch_num}] Average loss: {avg_loss:.6f}, Target loss: {avg_tar_loss:.6f}")
+
+    # Reset epoch accumulators
+    running_loss = 0.0
+    running_tar_loss = 0.0
+    ite_num4val = 0
