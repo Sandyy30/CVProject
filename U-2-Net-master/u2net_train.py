@@ -24,6 +24,8 @@ from data_loader import SalObjDataset
 from model import U2NET
 from model import U2NETP
 
+import time
+
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 # ------- 1. define loss function --------
@@ -121,6 +123,7 @@ ite_num4val = 0
 save_frq = 2000 # save the model every 2000 iterations
 
 for epoch in range(0, epoch_num):
+    start_time = time.time()
     net.train()
 
     for i, data in enumerate(salobj_dataloader):
@@ -167,9 +170,12 @@ for epoch in range(0, epoch_num):
             net.train()  # resume train
             ite_num4val = 0
 
+    end_time = time.time()  # ⏱️ End timing
+    elapsed_time = end_time - start_time
+
     avg_loss = running_loss / ite_num4val
     avg_tar_loss = running_tar_loss / ite_num4val
-    print(f"[Epoch {epoch + 1}/{epoch_num}] Average loss: {avg_loss:.6f}, Target loss: {avg_tar_loss:.6f}")
+    print(f"[Epoch {epoch + 1}/{epoch_num}] Average loss: {avg_loss:.6f}, Target loss: {avg_tar_loss:.6f}, Time Taken: {elapsed_time:.2f}s")
 
     # Reset epoch accumulators
     running_loss = 0.0
