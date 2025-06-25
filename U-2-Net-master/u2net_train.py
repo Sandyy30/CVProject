@@ -62,7 +62,7 @@ tra_label_dir = 'ECSSD_groundTruth/ground_truth_mask' + os.sep
 image_ext = '.jpg'
 label_ext = '.png'
 
-model_dir = os.path.join(os.getcwd(), 'saved_models', model_name + os.sep)
+model_dir = os.path.join(os.getcwd(), 'saved_models' + os.sep)
 
 epoch_num = 100
 batch_size_train = 12
